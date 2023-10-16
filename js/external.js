@@ -8,7 +8,7 @@ let favoriteColor = prompt("What is your favorite color?");
 // Respond to user regarding their favorite color
 alert(`Great, ${favoriteColor} is my favorite color too!`);
 
-// Movie rental calculationgit sta
+// Movie rental calculation
 let littleMermaidDays = prompt("How many days did you rent The Little Mermaid?");
 let brotherBearDays = prompt("How many days did you rent Brother Bear?");
 let herculesDays = prompt("How many days did you rent Hercules?");
