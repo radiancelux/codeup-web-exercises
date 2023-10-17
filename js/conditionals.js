@@ -107,6 +107,8 @@ if (confirm('Would you like to enter a number?')) {
             alert('That is not a number');
         } else {
             alert(`The number is ${number % 2 === 0 ? 'even' : 'odd'}`);
+            alert(`The number plus 100 is ${number + 100}`);
+            alert(`The number is ${number >= 0 ? 'positive' : 'negative'}`);
         }
     }
 }
