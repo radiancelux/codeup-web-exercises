@@ -96,8 +96,6 @@ if (isNaN(userTotalBill)) {
 } else {
     alert(`Your lucky number is ${luckyNumber}. Your price before the discount was ${userTotalBill}. Your price after discount is ${calculateTotal(luckyNumber, userTotalBill)}`);
 }
-alert(`Your lucky number is ${luckyNumber}. Your price before the discount was ${userTotalBill}. Your price after discount is ${calculateTotal(luckyNumber, userTotalBill)}`);
-
 // TODO: Ask user to enter a number and provide info
 if (confirm('Would you like to enter a number?')) {
     let number = prompt('Please enter a number:');
