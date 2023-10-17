@@ -101,12 +101,14 @@ alert(`Your lucky number is ${luckyNumber}. Your price before the discount was $
 // TODO: Ask user to enter a number and provide info
 if (confirm('Would you like to enter a number?')) {
     let number = prompt('Please enter a number:');
-    if (isNaN(number)) {
-        alert('That is not a number');
+    if (number === null || number.trim() === '') {
+        alert('You did not enter a number.');
     } else {
-        number = parseFloat(number);
-        alert(`The number is ${number % 2 === 0 ? 'even' : 'odd'}`);
-        alert(`The number plus 100 is ${number + 100}`);
-        alert(`The number is ${number >= 0 ? 'positive' : 'negative'}`);
+        number = parseFloat(number.trim());
+        if (isNaN(number)) {
+            alert('That is not a number');
+        } else {
+            alert(`The number is ${number % 2 === 0 ? 'even' : 'odd'}`);
+        }
     }
 }
