@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        'use strict';
+
+        // todo:
+        // Create an array of months for printing dates
+        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+        // todo:
+        // Create the date corresponding to your birthday using the JavaScript Date object.
+        // The Date object takes the year, month (0-based), and day as parameters
+        const jsBirthday = new Date(1983, 11, 25); // Replace with your actual birth year, month, and day
+
+        // Validate the date
+        if (Object.prototype.toString.call(jsBirthday) === "[object Date]") {
+            if (isNaN(jsBirthday.getTime())) {
+                console.error("Invalid date");
+            }
+        }
+        else {
+            console.error("Not a date");
+        }
+
+        // todo:
+        // Log your birthday in the format: January 1, 2014 using the JavaScript Date object.
+        // See link below for methods needed:
+        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#Getter
+        if (!isNaN(jsBirthday.getTime())) {
+            console.log('Here is my birthday using JavaScript: ' + months[jsBirthday.getMonth()] + ' ' + jsBirthday.getDate() + ', ' + jsBirthday.getFullYear());
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
