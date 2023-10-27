@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register With Us</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        form {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 5px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        fieldset {
+            margin-bottom: 20px;
+            padding: 10px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 15px;
+            background-color: #007BFF;
+            border: none;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        #profileImagePreview {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 200px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+        }
+        #error {
+            color: red;
+            display: none; /* Hidden by default */
+        }
+
+        input[type="submit"]:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        .required {
+            color: red;
+        }
+        .note {
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+<form method="POST" action="https://request-inspector.glitch.me/" target="_blank">
+
+    <!-- Display Name Input -->
+    <label for="displayName">Display Name: <span class="required">*</span></label>
+    <input type="text" id="displayName" name="displayName" placeholder="Enter your display name">
+
+    <!-- Profile Image Upload and Preview -->
+    <label for="profileImage">Profile Image:</label>
+    <img id="profileImagePreview" src="#" alt="Profile Image Preview" style="display:none;">
+    <input type="file" id="profileImage" name="profileImage">
+
+    <!-- Email Input -->
+    <label for="email">Email: <span class="required">*</span></label>
+    <input type="text" id="email" name="email" placeholder="Enter your email">
+
+    <!-- Password Input -->
+    <label for="password">Password: <span class="required">*</span></label>
+    <input type="password" id="password" name="password" placeholder="Enter your password">
+
+    <!-- Password Confirmation Input -->
+    <label for="passwordConfirm">Confirm Password: <span class="required">*</span></label>
+    <input type="password" id="passwordConfirm" name="passwordConfirm" placeholder="Confirm your password">
+    <span class="error" style="display:none" id="passwordError">Passwords do not match.</span>
+
+    <!-- Show Password -->
+    <label><input type="checkbox" id="showPassword"> Show Password</label>
+
+    <!-- Bio -->
+    <label for="bio">Bio:</label>
+    <textarea id="bio" name="bio" rows="4" placeholder="Tell us about yourself"></textarea>
+
+    <!-- How did you hear about us -->
+    <fieldset>
+        <legend>How did you hear about us?</legend>
+        <label><input type="checkbox" name="source" value="billboard"> Billboard</label>
+        <label><input type="checkbox" name="source" value="radio advertisement"> Radio Advertisement</label>
+        <label><input type="checkbox" name="source" value="internet advertisement"> Internet Advertisement</label>
+        <label><input type="checkbox" name="source" value="other"> Other</label>
+    </fieldset>
+
+    <!-- Submit Button -->
+    <p class="note">Fields marked with <span class="required">*</span> are required.</p>
+    <input type="submit" value="Register" onclick="return validateForm();" disabled id="submitBtn">
+
+</form>
+
+<script>
+
+    // Show Password
+    document.getElementById('showPassword').addEventListener('change', function() {
+        const passwordInput = document.getElementById('password');
+        const passwordConfirmInput = document.getElementById('passwordConfirm');
+
+        if (this.checked) {
+            passwordInput.type = 'text';
+            passwordConfirmInput.type = 'text';
+        } else {
+            passwordInput.type = 'password';
+            passwordConfirmInput.type = 'password';
+        }
+    });
+
+    // Preview Image Functionality
+    document.getElementById('profileImage').addEventListener('change', function() {
+        const file = this.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const previewImage = document.getElementById('profileImagePreview');
+                previewImage.src = e.target.result;
+                previewImage.style.display = "block";
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // Check Password Match
+    function checkPasswordMatch() {
+        const password = document.getElementById('password').value;
+        const passwordConfirm = document.getElementById('passwordConfirm').value;
+        const passwordError = document.getElementById('passwordError');
+
+        if (password && passwordConfirm) {
+            if (password !== passwordConfirm) {
+                passwordError.style.display = 'block';
+            } else {
+                passwordError.style.display = 'none';
+            }
+        }
+    }
+
+    // Event listeners for password and confirmation fields
+    document.getElementById('password').addEventListener('input', checkPasswordMatch);
+    document.getElementById('passwordConfirm').addEventListener('input', checkPasswordMatch);
+
+    function validateForm() {
+        // Check for password match
+        const password = document.getElementById('password').value;
+        const passwordConfirm = document.getElementById('passwordConfirm').value;
+        const passwordError = document.getElementById('passwordError');
+
+        if (password !== passwordConfirm) {
+            passwordError.style.display = 'block';
+            alert('Passwords do not match.');
+            return false; // prevent form submission
+        } else {
+            passwordError.style.display = 'none';
+        }
+
+        // Check for valid email
+        const email = document.getElementById('email').value;
+        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        if (!emailRegex.test(email)) {
+            alert('Please enter a valid email address.');
+            return false; // prevent form submission
+        }
+
+        // Check for display name input
+        const displayName = document.getElementById('displayName').value;
+        if (!displayName.trim()) {
+            alert('Please enter a display name.');
+            return false; // prevent form submission
+        }
+
+        // Check for password input
+        if (!password.trim()) {
+            alert('Please enter a password.');
+            return false; // prevent form submission
+        }
+
+        // If all checks pass, allow form submission
+        return true;
+    }
+
+    // Function to enable or disable the submit button based on filled fields
+    function toggleSubmitButton() {
+        const displayName = document.getElementById('displayName').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const passwordConfirm = document.getElementById('passwordConfirm').value;
+        const bio = document.getElementById('bio').value;
+
+        const submitBtn = document.getElementById('submitBtn');
+
+        if (displayName && email && password && passwordConfirm && bio) {
+            submitBtn.removeAttribute('disabled');
+        } else {
+            submitBtn.setAttribute('disabled', 'true');
+        }
+    }
+
+    // Add event listeners on required fields to check if they are filled out
+    document.getElementById('displayName').addEventListener('input', toggleSubmitButton);
+    document.getElementById('email').addEventListener('input', toggleSubmitButton);
+    document.getElementById('password').addEventListener('input', toggleSubmitButton);
+    document.getElementById('passwordConfirm').addEventListener('input', toggleSubmitButton);
+    document.getElementById('bio').addEventListener('input', toggleSubmitButton);
+
+    // Run the toggle function on page load just in case
+    toggleSubmitButton();
+
+</script>
+
+</body>
+</html>
