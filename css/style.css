@@ -1,9 +1,129 @@
-.fancy-header {
-    color: purple;
+/* Global Styles and Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-section:not(:last-of-type) {
-    border-bottom: 1px solid #A9A9A9;
-    margin-bottom: 1rem;
-    padding-bottom: 1rem;
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4;
+    background-image: url('https://img.freepik.com/premium-vector/abstract-watercolor-shading-brush-background-texture_154864-924.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #333;
+    line-height: 1.5;
+    font-size: 16px;
 }
+
+/* Main Heading */
+header {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 20px;
+    text-align: center;
+    border-bottom: 5px solid #0077CC;
+}
+
+header h1.fancy-header {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.2em;
+    font-style: italic;
+    font-weight: bold;
+}
+
+/* Section Headers */
+h2 {
+    background-color: #0077CC;
+    color: white;
+    padding: 10px;
+    margin: 20px 0;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+/* Lists */
+ul, ol {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+ul li, ol li {
+    margin-bottom: 10px;
+    padding-left: 20px;
+}
+
+ul li:before {
+    content: '■';
+    margin-left: -20px;
+    color: #0077CC;
+}
+
+ol li:before {
+    counter-increment: section;
+    content: counters(section, ".") " ";
+    margin-left: -20px;
+}
+
+/* Images */
+section img {
+    border-radius: 15px;
+    margin: 15px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+section img:hover {
+    transform: scale(1.05);
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #0077CC;
+    color: white;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+/* Anchor Styles */
+a {
+    color: #0077CC;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #FF6347;
+}
+
+footer a {
+    display: block;
+    margin: 20px 0;
+    text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header h1.fancy-header {
+        font-size: 2em;
+    }
+}
+
