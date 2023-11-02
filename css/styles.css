@@ -101,12 +101,14 @@ button.btn.btn-login {
 .footer-top {
     bottom: 0;
     left: 0;
+    width: 100%
 }
 
 .footer-bottom {
     bottom: 0;
     left: 0;
     z-index: 0;
+    width: 100%;
 }
 
 .container.login {
