@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            padding: 20px;
+            font-family: 'Arial', sans-serif; /* Use your preferred font here */
+            background: #f8f9fa; /* Assuming a light grey background as per mockup */
+            color: #333; /* Assuming a darker text color as per mockup */
+        }
+
+        h1, h2 {
+            font-weight: bold; /* Make headings bold */
+            text-align: center; /* Center-align all headings */
+        }
+
+        .text-center {
+            text-align: center; /* Center text for all elements with this class */
+        }
+
+        .mb-4 {
+            margin-bottom: 2rem; /* Adjust spacing as needed */
+        }
+
+        li {
+            margin-bottom: 0.5rem; /* Spacing between list items */
+        }
+
+        h2 {
+            text-transform: uppercase; /* All caps for section titles */
+            margin-bottom: 1rem; /* Spacing after titles */
+            color: #0A75BB;
+        }
+
+        .horizontal-rule {
+            border: 0;
+            height: 1px;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0)); /* Styling for <hr> */
+            margin-top: 2rem; /* Spacing before hr */
+            margin-bottom: 2rem; /* Spacing after hr */
+        }
+
+        .contact-info .contact-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .contact-info .contact-item i {
+            margin-right: 0.5rem; /* adjust space between icon and text */
+        }
+
+        @media (min-width: 768px) { /* This is for md screens, adjust the pixel value based on the Bootstrap version you are using */
+            .contact-info {
+                justify-content: space-evenly; /* This will space out the columns evenly */
+            }
+        }
+        .section {
+            margin-bottom: 2rem; /* Spacing after each section */
+        }
+        .profile-img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 10%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <!-- Header Section -->
+    <div class="row mb-4">
+        <div class="col">
+            <img class="profile-img" src="images/duck.png" />
+            <h1>CODY THE DUCK</h1>
+            <p class="text-center">Software Developer</p>
+            <div class="contact-info row justify-content-center text-center">
+                <div class="col-12 col-md-4">
+                    <div class="contact-item">
+                        <i class="bi bi-envelope-fill"></i> <span>cody@codeup.com</span>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="contact-item">
+                        <i class="bi bi-linkedin"></i> <span>/in/codytheduck</span>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="contact-item">
+                        <i class="bi bi-github"></i> <span>/codytheduck</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr class="horizontal-rule">
+
+    <div class="row">
+        <div class="col-12 col-md-3">
+            <!-- Skills and Abilities Section -->
+            <div class="row section">
+                <div class="col">
+                    <h2>Skills and Abilities</h2>
+                    <ul class="text-start">
+                        <li>HTML</li>
+                        <li>CSS</li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Academic Section -->
+            <div class="row section">
+                <div class="col">
+                    <h2>Academic Background</h2>
+                    <p class="text-center">B.Sc. in Computer Science from XYZ University</p>
+
+                </div>
+            </div>
+
+            <!-- Professional Experience Section -->
+            <div class="row section">
+                <div class="col">
+                    <h2>Professional Experience</h2>
+
+                    <ul class="list-unstyled text-center">
+                        <li>Senior Software Developer at ABC Corp</li>
+                        <li>Junior Software Developer at XYZ Inc</li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-9">
+            <!-- Projects and Awards Section -->
+            <div class="row section">
+                <div class="col">
+                    <h2>Development Projects</h2>
+                    <ul class="list-unstyled text-start">
+                        <li>Project Manager & Lead Developer - Project Alpha</li>
+                        <p>Boatswain six pounders lad loot run a rig main sheet topgallant swing the lead belay league. Hang the jib grapple Buccaneer jury mast crow's nest hempen halter trysail pillage scourge of the seven seas fire in the hole. Coffer pressgang parrel Buccaneer scuttle scourge of the seven seas bring a spring upon her cable crack Jennys tea cup barkadeer ho.</p>
+                        <li>Software Developer - Project Beta</li>
+                        <p>Belaying pin coxswain landlubber or just lubber bilge hail-shot plunder spyglass pressgang carouser hang the jib. Pirate scourge of the seven seas Nelsons folly Chain Shot swab strike colors grog ahoy pressgang dead men tell no tales. Heave down belay carouser Barbary Coast swab driver to go on account brig capstan parley.</p>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="row section">
+                <div class="col">
+                    <h2>Awards</h2>
+                    <ul class="list-unstyled text-left">
+                        <li>Medal of Honor</li>
+                        <p>Swab draft lad Admiral of the Black clap of thunder snow crow's nest gun to go on account black spot. Quarter cackle fruit brig boatswain lee hulk Pieces of Eight knave list chantey. Draft long boat pirate driver rigging hearties Sail ho sutler killick jack.</p>
+                        <li>Stayed at a holiday Inn Last night</li>
+                        <p>Gally black spot hempen halter hang the jib trysail Arr lugger broadside fore booty. Warp provost chase long clothes hail-shot boatswain scurvy log dance the hempen jig gangplank. Yellow Jack cackle fruit holystone shrouds galleon Corsair chantey overhaul pillage yo-ho-ho.</p>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
