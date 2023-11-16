@@ -3,6 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>DOM: Query and Modify</title>
+    <style>
+
+        p {
+            font-size: 16px;
+        }
+
+        li:hover {
+            color: red;
+        }
+    </style>
 </head>
 <body>
 
@@ -25,7 +35,7 @@
     culpa qui officia deserunt mollit anim id est laborum.
 </p>
 
-<!-- Add buttons -->
+<!-- buttons -->
 <button id="button1">Button 1</button>
 <button id="button2">Button 2</button>
 <button id="button3">Button 3</button>
@@ -37,7 +47,7 @@
     // Add event listeners to the buttons
     const button1 = document.getElementById('button1');
 
-    button1.addEventListener('click', function() {
+    button1.addEventListener('click', function () {
 
         const mainHeader = document.getElementById('main-header');
 
@@ -46,7 +56,7 @@
 
     const button2 = document.getElementById('button2');
 
-    button2.addEventListener('click', function() {
+    button2.addEventListener('click', function () {
 
         const subHeader = document.getElementById('sub-header');
 
@@ -55,7 +65,7 @@
 
     const button3 = document.getElementById('button3');
 
-    button3.addEventListener('click', function() {
+    button3.addEventListener('click', function () {
 
         const listItems = document.querySelectorAll('li');
 
@@ -67,7 +77,7 @@
     });
 
     const button4 = document.getElementById('button4');
-    button4.addEventListener('click', function() {
+    button4.addEventListener('click', function () {
         // Set text color of li with dbid = 1 to blue
         const listItem1 = document.querySelector('li[data-dbid="1"]');
         listItem1.style.color = 'blue';
@@ -77,6 +87,20 @@
 
         // Change the text in the first sub paragraph to "Mission Accomplished!"
         subParagraphs[0].textContent = "Mission Accomplished!";
+    });
+
+    // Add event listener to change h1 background color when clicked
+    const mainHeader = document.getElementById('main-header');
+    mainHeader.addEventListener('click', function () {
+        mainHeader.style.backgroundColor = 'lightblue';
+    });
+
+    // Add event listener to change paragraph font size on double click
+    const paragraphs = document.querySelectorAll('p');
+    paragraphs.forEach((paragraph) => {
+        paragraph.addEventListener('dblclick', function () {
+            paragraph.style.fontSize = '18px';
+        });
     });
 </script>
 </body>
