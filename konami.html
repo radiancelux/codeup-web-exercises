@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Konami Code</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .konami {
+            font-size: 24px;
+            color: #fff;
+            text-align: center;
+            animation: rainbow 4s infinite;
+            display: none;
+        }
+
+        .entered-keys {
+            font-size: 24px;
+            color: #fff;
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        @keyframes rainbow {
+            0% { color: red; }
+            14% { color: orange; }
+            28% { color: yellow; }
+            42% { color: green; }
+            57% { color: blue; }
+            71% { color: indigo; }
+            85% { color: violet; }
+        }
+        #toasty {
+            display: none;
+            position: absolute;
+            bottom: -100px; /* Initially hidden below the screen */
+            right: 0;
+            z-index: 100;
+            transition: bottom 2s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+<div id="game">
+    <!-- Include an empty iframe initially -->
+    <iframe id="contraGame" width="600" height="450" frameborder="no" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" scrolling="no"></iframe>
+</div>
+</div>
+<div class="konami" id="konami-text">Konami Code Activated!</div>
+<div class="entered-keys" id="entered-keys"></div>
+<h1>Konami Code</h1>
+
+<img src="https://static.wikia.nocookie.net/mkwikia/images/e/ed/Toasty_mk3.JPG" alt="Toasty" id="toasty">
+
+<audio id="konamiSound" src="/media/sonic.mp3"></audio>
+<audio id="toastySound" src="/media/toasty.mp3"></audio>
+<audio id="diedSound" src="/media/mario.mp3"></audio>
+<audio id="correctSound" src="/media/coin.mp3"></audio>
+<audio id="completeSound" src="/media/clear.mp3"></audio>
+
+<script>
+    "use strict";
+
+    const konamiCode = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a", "Enter"];
+    let konamiIndex = 0;
+    let enteredKeys = [];
+
+    const konamiSound = document.getElementById("konamiSound");
+    const toastySound = document.getElementById("toastySound");
+    const diedSound = document.getElementById("diedSound");
+    const correctSound = document.getElementById("correctSound");
+    const completeSound = document.getElementById("completeSound");
+
+    const enteredKeysElement = document.getElementById("entered-keys");
+    const toastyImage = document.getElementById("toasty");
+
+    const konamiText = document.getElementById("konami-text");
+
+    const contraGameFrame = document.getElementById("contraGame");
+
+    // Add a click event listener to the "Konami Code Activated!" text
+    konamiText.addEventListener("click", () => {
+        // Open the Contra game in the iframe when clicked
+        contraGameFrame.src = "https://www.retrogames.cc/embed/16841-contra-usa.html";
+    });
+
+
+    document.addEventListener("keyup", event => {
+        const keyPressed = event.key;
+
+        if (konamiIndex < konamiCode.length) {
+            enteredKeys.push(keyPressed);
+            updateEnteredKeys();
+
+            if (keyPressed === konamiCode[konamiIndex]) {
+                if (konamiIndex === 7) {
+                    playKonamiSound()
+                }else{
+                    playCorrectSound()
+                }
+                konamiIndex++;
+
+            } else {
+
+                if (enteredKeys.length < 9) {
+                    playDiedSound()
+                }else{
+                    playToastySound();
+                }
+                konamiIndex = 0; // Reset if the key doesn't match the sequence
+                enteredKeys = [];
+                enteredKeysElement.textContent = "";
+
+            }
+        }
+
+        if (konamiIndex === konamiCode.length) {
+            // Konami Code entered correctly
+            flashEnteredKeys();
+            playCompleteSound();
+            document.getElementById("konami-text").style.display = "block";
+            setTimeout(() => {
+                document.getElementById("konami-text").style.display = "none";
+                konamiIndex = 0; // Reset the code index
+                enteredKeys = [];
+                updateEnteredKeys();
+            }, 4000); // Hide the message after 4 seconds
+        }
+    });
+
+    function updateEnteredKeys() {
+
+        const enteredKeysText = enteredKeys.map(key => {
+            switch (key.toUpperCase()) {
+                case "ARROWUP":
+                    return "▲";
+                case "ARROWDOWN":
+                    return "▼";
+                case "ARROWLEFT":
+                    return "◄";
+                case "ARROWRIGHT":
+                    return "►";
+                case "B":
+                    return "B";
+                case "A":
+                    return "A";
+                case "ENTER":
+                    return "Start";
+                default:
+                    return "";
+            }
+        }).join(' ');
+
+        enteredKeysElement.style.color = 'violet';
+        enteredKeysElement.textContent = enteredKeysText;
+    }
+
+    function flashEnteredKeys() {
+        const enteredKeysElement = document.getElementById("entered-keys");
+        enteredKeysElement.style.animation = "flash 0.5s alternate infinite";
+        setTimeout(() => {
+            enteredKeysElement.style.animation = "none";
+        }, 2000); // Stop flashing after 2 seconds
+    }
+
+    function playKonamiSound() {
+        if (konamiSound.paused) {
+            konamiSound.play();
+        } else {
+            konamiSound.currentTime = 0;
+        }
+    }
+
+    function playToastySound() {
+        if (toastySound.paused) {
+            toastySound.play();
+            // Display the "Toasty" image by changing its position
+            toastyImage.style.bottom = "0";
+            toastyImage.style.display = "block";
+            setTimeout(() => {
+                // Hide the "Toasty" image by moving it back below the screen
+                toastyImage.style.bottom = "-100px";
+                toastyImage.style.display = "none";
+            }, 2000); // Hide the image after 2 seconds
+        } else {
+            toastySound.currentTime = 0;
+        }
+    }
+    function playDiedSound() {
+        if (diedSound.paused) {
+            diedSound.play();
+        } else {
+            diedSound.currentTime = 0;
+        }
+    }
+    function playCorrectSound() {
+        if (correctSound.paused) {
+            correctSound.play();
+        } else {
+            correctSound.currentTime = 0;
+        }
+    }
+    function playCompleteSound() {
+        if (completeSound.paused) {
+            completeSound.play();
+        } else {
+            completeSound.currentTime = 0;
+        }
+    }
+
+</script>
+</body>
+</html>
