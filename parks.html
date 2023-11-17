@@ -1,0 +1,203 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Parks</title>
+
+</head>
+<style>
+  .gallery {
+    text-align: center; /* Aligns the frames to the center */
+  }
+
+  .frame {
+    border: 10px solid #80461b; /* Picture frame color */
+    padding: 5px;
+    width: 400px;
+    height: 600px;
+    margin: 10px;
+    background-size: cover;
+    display: inline-block; /* Align frames side by side */
+    position: relative; /* Needed for absolute positioning of the button */
+  }
+
+  #left-frame {
+    background-image: url('https://sep.turbifycdn.com/ty/cdn/madisonartshop/most-famous-paintings-17.jpg');
+  }
+
+  #center-frame {
+        background-image: url('https://www.singulart.com/blog/wp-content/uploads/2023/10/Portrait-of-Madame-X-by-John-Singer-Sargent-1140x2214.jpg');
+    }
+
+  #right-frame {
+        background-image: url('https://www.chinadaily.com.cn/culture/art/img/attachement/jpg/site1/20141016/00221910da6c15a9788b28.jpg');
+    }
+
+  .frame button {
+    position: absolute;
+    bottom: -20px; /* Positioning button below the frame */
+    left: 50%;
+    transform: translateX(-50%); /* Center the button */
+    padding: 5px 10px;
+  }
+  h1 {
+    text-align: center;
+  }
+  h3 {
+    cursor: pointer; /* Indicates the header is clickable */
+  }
+  ul {
+    list-style-type: none; /* Remove default bullet points */
+    padding: 0;
+  }
+  li {
+    cursor: pointer; /* Indicates the list items are clickable */
+    margin-bottom: 5px; /* Spacing between list items */
+  }
+  .highlight-last {
+    margin-bottom: 20px; /* Additional spacing for the button */
+  }
+</style>
+<body>
+
+<div class="gallery">
+<div class="frame" id="left-frame" style="background-image: url('https://sep.turbifycdn.com/ty/cdn/madisonartshop/most-famous-paintings-17.jpg');">
+  <button class="swap-left-center">Swap Left</button>
+</div>
+<div class="frame" id="center-frame" style="background-image: url('https://www.singulart.com/blog/wp-content/uploads/2023/10/Portrait-of-Madame-X-by-John-Singer-Sargent-1140x2214.jpg');">
+  <button class="swap-random">Swap Randomly</button>
+</div>
+<div class="frame" id="right-frame" style="background-image: url('https://www.chinadaily.com.cn/culture/art/img/attachement/jpg/site1/20141016/00221910da6c15a9788b28.jpg');">
+  <button class="swap-right-center">Swap Right</button>
+</div>
+</div>
+<h1>National Parks FAQ</h1>
+
+<dl>
+  <dt>How many people visit the national parks?</dt>
+  <dd>Total recreation visitors to the national parks in 2018: 318,211,833.</dd>
+
+  <dt>How old is the National Park System?</dt>
+  <dd>The National Park Service was created by an act signed by President Woodrow Wilson on August 25, 1916.</dd>
+
+  <dt>How many employees are in the National Park Service?</dt>
+  <dd>Permanent, temporary, and seasonal employees: More than 20,000</dd>
+
+  <dt>What is the origin of the National Park Service arrowhead?</dt>
+  <dd>The arrowhead was authorized as the official National Park Service emblem by the Secretary of the Interior on July 20, 1951.</dd>
+
+  <dt>How many areas are in the National Park System?</dt>
+  <dd>The system includes 419 areas covering more than 85 million acres in every state, the District of Columbia, American Samoa, Guam, Puerto Rico, and the Virgin Islands.</dd>
+
+  <dt>What is the largest national park site?</dt>
+  <dd>Wrangell-St. Elias National Park and Preserve, AK, at 13.2 million acres.</dd>
+
+  <dt>What is the National Park Service budget?</dt>
+  <dd>Fiscal Year (FY) 2014 Enacted: $2.98 billion.</dd>
+
+  <dt>Can I bring my pet to a national park?</dt>
+  <dd>Some national parks welcome pets—in developed areas, on many trails and campgrounds, and in some lodging facilities.</dd>
+
+  <dt>How do I apply for a job with the National Park Service?</dt>
+  <dd>National Park Service jobs, including both permanent and seasonal positions, are listed on USAJOBs.</dd>
+
+  <dt>What do I need to know about driving off road in national parks?</dt>
+  <dd>Before you head out, check with the national parks that you intend to visit. In many national parks, off-road driving is illegal. Where off-road driving is allowed, the National Park Service regulates it.</dd>
+</dl>
+
+<h3>Yellowstone National Park</h3>
+<ul>
+  <li>First National Park in the world</li>
+  <li>Home to a supervolcano</li>
+  <li>Famous for geothermal features</li>
+  <li>Established in 1872</li>
+</ul>
+
+<button class="highlight-last">Highlight Last Fact</button>
+
+<h3>Yosemite National Park</h3>
+<ul>
+  <li>Known for its waterfalls</li>
+  <li>Over 800 miles of trails</li>
+  <li>Location of El Capitan</li>
+  <li>Designated a World Heritage Site in 1984</li>
+</ul>
+
+<button class="highlight-last">Highlight Last Fact</button>
+
+<h3>Grand Canyon National Park</h3>
+<ul>
+  <li>Contains 277 miles of the Colorado River</li>
+  <li>Has over 1 billion years of exposed rock layers</li>
+  <li>Attracts over 5 million visitors a year</li>
+  <li>One of the Seven Natural Wonders of the World</li>
+</ul>
+
+<button class="highlight-last">Highlight Last Fact</button>
+
+<!-- Add this script tag at the end of your body element -->
+<script>
+  // Wait for the DOM to load
+  document.addEventListener('DOMContentLoaded', (event) => {
+    // Button click event to highlight last li
+    document.querySelectorAll('.highlight-last').forEach(button => {
+      button.addEventListener('click', function() {
+        this.previousElementSibling.lastElementChild.style.backgroundColor = 'yellow';
+      });
+    });
+
+    // h3 click event to bold the facts
+    document.querySelectorAll('h3').forEach(header => {
+      header.addEventListener('click', function() {
+        this.nextElementSibling.childNodes.forEach(li => {
+          li.style.fontWeight = 'bold';
+        });
+      });
+    });
+
+    // li click event to color the first li
+    document.querySelectorAll('ul').forEach(ul => {
+      ul.childNodes.forEach(li => {
+        li.addEventListener('click', function() {
+          this.parentNode.firstElementChild.style.color = 'blue';
+        });
+      });
+    });
+  });
+
+  // Additional script for bonus task
+  document.addEventListener('DOMContentLoaded', (event) => {
+    // Left and center swap
+    document.querySelector('.swap-left-center').addEventListener('click', function() {
+      let leftFrame = document.getElementById('left-frame');
+      let centerFrame = document.getElementById('center-frame');
+      let temp = leftFrame.style.backgroundImage;
+      leftFrame.style.backgroundImage = centerFrame.style.backgroundImage;
+      centerFrame.style.backgroundImage = temp;
+    });
+
+    // Random swap for center
+    document.querySelector('.swap-random').addEventListener('click', function() {
+      let leftFrame = document.getElementById('left-frame');
+      let centerFrame = document.getElementById('center-frame');
+      let rightFrame = document.getElementById('right-frame');
+      let frames = [leftFrame, rightFrame];
+      let randomFrame = frames[Math.floor(Math.random() * frames.length)];
+      let temp = centerFrame.style.backgroundImage;
+      centerFrame.style.backgroundImage = randomFrame.style.backgroundImage;
+      randomFrame.style.backgroundImage = temp;
+    });
+
+    // Right and center swap
+    document.querySelector('.swap-right-center').addEventListener('click', function() {
+      let rightFrame = document.getElementById('right-frame');
+      let centerFrame = document.getElementById('center-frame');
+      let temp = rightFrame.style.backgroundImage;
+      rightFrame.style.backgroundImage = centerFrame.style.backgroundImage;
+      centerFrame.style.backgroundImage = temp;
+    });
+  });
+</script>
+</body>
+</html>
