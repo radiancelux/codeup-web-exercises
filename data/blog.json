@@ -1,0 +1,50 @@
+[
+  {
+    "postId": "1",
+    "username": "johndoe",
+    "avatar": "/images/john.jpeg",
+    "title": "My First Blog Post",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
+    "categories": ["greek"],
+    "date": "January 25, 2015 12:00:00",
+    "likes": 0,
+    "comments": [
+      {
+        "commentId": "1",
+        "username": "janedoe",
+        "avatar": "/images/jane.jpeg",
+        "content": "Great post!",
+        "date": "January 26, 2015 12:00:00",
+        "likes": 0
+      },
+      {
+        "commentId": "2",
+        "username": "johndoe",
+        "avatar": "/images/john.jpeg",
+        "content": "Very informative, thank you.",
+        "date": "January 27, 2015 12:00:00",
+        "likes": 0
+      }
+    ]
+  },
+  {
+    "postId": "2",
+    "username": "janedoe",
+    "avatar": "/images/jane.jpeg",
+    "title": "The Second Post",
+    "content": "Cupcake ipsum dolor sit amet gummies. Cake chocolate sweet ice cream oat cake biscuit bear claw dessert...",
+    "categories": ["family", "candy", "sweets", "sugar"],
+    "date": "February 14, 2015 12:00:00",
+    "likes": 0,
+    "comments": [
+      {
+        "commentId": "1",
+        "username": "johndoe",
+        "avatar": "/images/john.jpeg",
+        "content": "Love this!",
+        "date": "February 15, 2015 12:00:00",
+        "likes": 0
+      }
+    ]
+  }
+]
