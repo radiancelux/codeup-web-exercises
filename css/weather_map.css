@@ -1,0 +1,42 @@
+/* weather_map.css */
+/* Base styling for all forecast cards */
+.forecast-card {
+    border: 1px solid #ddd; /* subtle border */
+    transition: transform 0.3s ease-in-out; /* smooth transition for hover effect */
+}
+
+/* Hover effect for forecast cards */
+.forecast-card:hover {
+    transform: translateY(-5px); /* slightly raise the card on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* add shadow for depth */
+}
+
+/* Specific styling for the current forecast card */
+.Current {
+    color: blue; /* blue text */
+    border: 2px solid #0056b3; /* blue border */
+    border-color: #0056b3; /* slightly darker blue border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* more pronounced shadow */
+}
+
+/* Styling for the text within the current card */
+.Current h3 {
+    font-size: 1.25rem; /* larger font size */
+    margin-bottom: 0.5rem; /* space below the heading */
+}
+
+.Current p {
+    font-size: 1rem; /* slightly larger font size for the text */
+}
+
+/* Styling for the image within the current card */
+.Current img {
+    width: 50px; /* smaller image */
+    height: 50px; /* maintain aspect ratio */
+    object-fit: cover; /* ensure the image covers the area */
+    border-radius: 50%; /* circular image */
+    background-color: #fff; /* white background for the image */
+    padding: 5px; /* spacing around the image */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* subtle shadow for the image */
+}
+

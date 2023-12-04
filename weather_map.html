@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather App</title>
+
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/weather_map.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+</head>
+<body>
+
+<h1 class="text-4xl text-center text-blue-800 my-6 font-bold">Weather App</h1>
+
+<div class="map-style-buttons flex flex-col absolute bottom-0 left-0 m-4 w-48 z-10">
+    <div class="flex search-area items-center mx-auto max-w-md">
+        <input type="text" id="searchInput" placeholder="Enter a location" class="shadow appearance-none border rounded-l w-full text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-10 px-3">
+        <button onclick="geocodeLocation(document.getElementById('searchInput').value)" class="bg-blue-500 hover:bg-blue-200 text-white font-bold rounded-r focus:outline-none focus:shadow-outline h-10 px-3 flex items-center justify-center">
+            <svg width="20px" height="20px" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M10 6.5C10 8.433 8.433 10 6.5 10C4.567 10 3 8.433 3 6.5C3 4.567 4.567 3 6.5 3C8.433 3 10 4.567 10 6.5ZM9.30884 10.0159C8.53901 10.6318 7.56251 11 6.5 11C4.01472 11 2 8.98528 2 6.5C2 4.01472 4.01472 2 6.5 2C8.98528 2 11 4.01472 11 6.5C11 7.56251 10.6318 8.53901 10.0159 9.30884L12.8536 12.1464C13.0488 12.3417 13.0488 12.6583 12.8536 12.8536C12.6583 13.0488 12.3417 13.0488 12.1464 12.8536L9.30884 10.0159Z"
+                        fill="#FFF"
+                />
+            </svg>
+        </button>
+    </div>
+    <button data-style="streets-v11" class="map-style-button mt-2 bg-blue-700 hover:bg-blue-200 text-white font-bold py-2 px-4 mb-2 rounded">Streets</button>
+    <button data-style="light-v10" class="map-style-button bg-blue-500 hover:bg-blue-200 text-white font-bold py-2 px-4 mb-2 rounded">Light</button>
+    <button data-style="dark-v10" class="map-style-button bg-blue-500 hover:bg-blue-200 text-white font-bold py-2 px-4 mb-2 rounded">Dark</button>
+    <button data-style="satellite-v9" class="map-style-button bg-blue-500 hover:bg-blue-200 text-white font-bold py-2 px-4 mb-2 rounded">Satellite</button>
+    <div class="map-zoom-buttons flex">
+        <button onclick="zoomIn()" class="zoom-in-button m-auto bg-blue-500 hover:bg-blue-200 text-white font-bold py-2 px-4 mb-2 rounded">+</button>
+        <button onclick="zoomOut()" class="zoom-out-button m-auto bg-blue-500 hover:bg-blue-200 text-white font-bold py-2 px-4 mb-2 rounded">-</button>
+    </div>
+
+</div>
+
+<h2 id="searchHeader" class="text-2xl text-center my-4"></h2>
+<div id="forecast" class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-5 gap-4 p-4">
+    <!-- Forecast cards will be dynamically inserted here -->
+</div>
+<div id="map" style="width: 100%; height: 600px;"></div>
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"></script>
+<script type="module" src="js/weather_map.js"></script>
+</body>
+</html>
