@@ -3,14 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Weather App</title>
-    <!-- Include your CSS file here -->
+
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/weather_map.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
 </head>
 <body>
 <h1>Weather App</h1>
-<div id="forecast"><!-- Weather forecast will go here --></div>
+
+
 <div id="map" style="width: 100%; height: 300px;"></div>
-<!-- Include your JavaScript file here -->
+<input type="text" id="searchInput" placeholder="Enter a location">
+<button onclick="geocodeLocation(document.getElementById('searchInput').value)">Search</button>
+<div id="forecast" class="grid grid-cols-1 md:grid-cols-5 gap-4"><!-- Weather forecast will go here --></div>
 <script src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"></script>
 <script type="module" src="js/weather_map.js"></script>
 </body>
