@@ -193,10 +193,10 @@ function updateButtonStyles(currentStyle) {
     });
 }
 
-function zoomIn() {
+window.zoomIn = function zoomIn() {
     map.zoomTo(map.getZoom() + 1);
 }
 
-function zoomOut() {
+window.zoomOut = function zoomOut() {
     map.zoomTo(map.getZoom() - 1);
 }
