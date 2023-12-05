@@ -34,9 +34,11 @@
     width: 50px; /* smaller image */
     height: 50px; /* maintain aspect ratio */
     object-fit: cover; /* ensure the image covers the area */
-    border-radius: 50%; /* circular image */
     background-color: #fff; /* white background for the image */
-    padding: 5px; /* spacing around the image */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* subtle shadow for the image */
+}
+
+.map-style-button {
+    transition: background-color 0.3s ease;
+}
 }
 

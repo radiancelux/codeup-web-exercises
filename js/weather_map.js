@@ -25,7 +25,6 @@ map.on('load', () => {
     setDOMEventListeners(); // Set DOM event listeners
 });
 
-
 function setMapEventListeners() {
     map.on('click', (e) => {
         const coordinates = [e.lngLat.lng, e.lngLat.lat];
